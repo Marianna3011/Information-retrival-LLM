@@ -22,6 +22,9 @@ def printResults(results: List[Dict[str, Any]]) -> None:
         print(f"Faithfulness Score: {r['score']}")
 
 def truncate_context(context: str, question: str, max_length: int = 512) -> str:
+    '''
+    Truncates the context to fit within the maximum length allowed by the model,
+    '''
     tokens = tokenizer.encode(question, context, truncation=True, max_length=max_length)
     decoded = tokenizer.decode(tokens, skip_special_tokens=True)
     if decoded.startswith(question):
